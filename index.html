@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Focusly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f5f8f4;--ink:#10231c;--mute:#52665d;--card:#ffffff;--line:#dbe5de;--acc:#1f7a5a;--acc2:#0f5a41;--sun:#ffd166;--font-d:'Bricolage Grotesque',system-ui,sans-serif;--font-b:'DM Sans',system-ui,sans-serif;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);font-size:17px;line-height:1.6}
+a{color:inherit;text-decoration:none}h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--font-d);letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+.w{max-width:1100px;margin-inline:auto;padding-inline:20px}
+.demo{background:var(--ink);color:#d7e6dd;font-size:13px;text-align:center;padding:8px 16px}
+.demo b{color:var(--sun)}
+header{display:flex;justify-content:space-between;align-items:center;padding-block:20px}
+.logo{font-family:var(--font-d);font-weight:800;font-size:24px;display:flex;align-items:center;gap:8px}
+.logo i{width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(31,122,90,.2)}
+nav{display:flex;gap:26px;font-weight:500;font-size:15px;color:var(--mute)}nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;background:var(--acc);color:#fff;font-weight:700;border:0;font:700 16px var(--font-b);cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--acc2);transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}.btn.alt:hover{background:var(--ink);color:#fff}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 80px}
+.tag{display:inline-block;background:#e3f1e9;color:var(--acc2);font-weight:700;font-size:14px;padding:6px 14px;border-radius:999px}
+.hero h1{font-size:clamp(42px,6.4vw,76px);font-weight:800;margin-top:20px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sun) 62%)}
+.hero p.lead{font-size:20px;color:var(--mute);margin-top:22px;max-width:480px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.small{font-size:14px;color:var(--mute);margin-top:16px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 30px 60px -30px rgba(16,35,28,.35);transform:rotate(1.5deg)}
+.app-h{display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-bottom:14px}
+.app-h span{font-size:13px;color:var(--mute);font-weight:500}
+.day{display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:14px}
+.day time{color:var(--mute);font-variant-numeric:tabular-nums}
+.blk{padding:12px 14px;border-radius:14px;font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.blk small{font-weight:500;opacity:.75}
+.b1{background:#d9efe3}.b2{background:#fff0c2}.b3{background:#dfe8fb}.b4{background:#fbe0e0}
+.prog{margin-top:14px;background:var(--bg);border-radius:14px;padding:14px}
+.prog div{height:8px;border-radius:99px;background:#d6e2da;margin-top:8px;overflow:hidden}
+.prog div i{display:block;height:100%;width:68%;background:var(--acc);border-radius:99px}
+section{padding-block:76px}
+.sh{max-width:620px;margin-bottom:40px}.sh h2{font-size:clamp(32px,5vw,52px);font-weight:800}.sh p{color:var(--mute);margin-top:14px}
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.f .ic{width:46px;height:46px;border-radius:14px;background:#e3f1e9;display:grid;place-items:center;margin-bottom:18px}
+.f .ic svg{width:24px;height:24px;stroke:var(--acc2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.f h3{font-size:22px;font-weight:700;margin-bottom:8px}.f p{color:var(--mute);font-size:16px}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:s}
+.st{border-top:3px solid var(--ink);padding-top:18px;counter-increment:s}
+.st::before{content:"Step " counter(s);font-weight:700;color:var(--acc);font-size:14px}
+.st h3{font-size:24px;margin:8px 0}.st p{color:var(--mute)}
+.price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:780px}
+.pl{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.pl.pro{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pl .n{font-weight:700}.pl .p{font-family:var(--font-d);font-size:48px;font-weight:800}.pl .p small{font-size:16px;font-weight:500;opacity:.7}
+.pl ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:16px}.pl li::before{content:"✓ ";color:var(--acc);font-weight:700}.pl.pro li::before{color:var(--sun)}
+.pl .btn{margin-top:auto;justify-content:center}.pl.pro .btn{background:var(--sun);color:var(--ink)}
+details{border-bottom:1px solid var(--line);padding:20px 0;max-width:760px}
+summary{font-weight:700;font-size:19px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";font-size:24px;line-height:1}details[open] summary::after{content:"–"}
+details p{color:var(--mute);margin-top:10px}
+.final{background:var(--acc);color:#fff;border-radius:32px;padding:56px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.final h2{font-size:clamp(32px,5vw,54px);font-weight:800;max-width:640px}
+.final form{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;width:100%;max-width:480px}
+.final input{flex:1 1 220px;min-width:0;padding:15px 20px;border-radius:999px;border:0;font:16px var(--font-b)}
+.final .btn{background:var(--ink)}
+#ok{min-height:1.4em;font-weight:700;color:var(--sun)}
+footer{padding-block:36px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.app{transform:none}.feat,.steps{grid-template-columns:1fr}.price{grid-template-columns:1fr}nav{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<div class="demo">Sample landing page designed by <b>DP Studio</b>. Focusly is a fictional product.</div>
+<div class="w">
+<header><a class="logo" href="#"><i></i>Focusly</a><nav><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav><a class="btn" href="#join">Get early access</a></header>
+<div class="hero">
+  <div>
+    <span class="tag">Study planner for students</span>
+    <h1>Plan your study week in <em>two minutes.</em></h1>
+    <p class="lead">Add your subjects and exam dates. Focusly builds a realistic weekly timetable and adjusts it when you miss a session.</p>
+    <div class="cta"><a class="btn" href="#join">Join the waitlist</a><a class="btn alt" href="#how">See how it works</a></div>
+    <p class="small">Free for your first three subjects. No card needed.</p>
+  </div>
+  <div class="app" aria-label="Example weekly plan">
+    <div class="app-h">Monday<span>3 sessions · 4h 30m</span></div>
+    <div class="day"><time>07:00</time><div class="blk b1">Physics: Optics <small>90 min</small></div></div>
+    <div class="day"><time>11:00</time><div class="blk b2">Maths: Integration <small>60 min</small></div></div>
+    <div class="day"><time>16:30</time><div class="blk b3">Chemistry revision <small>45 min</small></div></div>
+    <div class="day"><time>20:00</time><div class="blk b4">Mock test: Paper 2 <small>75 min</small></div></div>
+    <div class="prog"><b style="font-size:14px">Week progress · 68%</b><div><i></i></div></div>
+  </div>
+</div>
+</div>
+<section id="features"><div class="w">
+  <div class="sh"><h2>Built for the weeks that get busy.</h2><p>A plan only works if it survives a bad day. Focusly is designed around that.</p></div>
+  <div class="feat">
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></div><h3>Exam-first timetable</h3><p>Enter each exam date and the topics left. Hard subjects get more time, and easy ones stay light.</p></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></div><h3>Auto-reschedule</h3><p>Missed a session? Tap once and the rest of your week shifts to cover it.</p></div>
+    <div class="f"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></div><h3>Focus timer</h3><p>25-minute sessions with short breaks, logged automatically so you see where time goes.</p></div>
+  </div>
+</div></section>
+<section id="how" style="padding-top:0"><div class="w">
+  <div class="sh"><h2>From messy to planned in three steps.</h2></div>
+  <div class="steps">
+    <div class="st"><h3>Add subjects</h3><p>Pick your subjects and mark the exam dates.</p></div>
+    <div class="st"><h3>Set your hours</h3><p>Tell Focusly when you are free on each day.</p></div>
+    <div class="st"><h3>Follow the plan</h3><p>Open the app each morning and start the first block.</p></div>
+  </div>
+</div></section>
+<section id="pricing" style="padding-top:0"><div class="w">
+  <div class="sh"><h2>Simple pricing.</h2><p>Start free. Upgrade when your subject list grows.</p></div>
+  <div class="price">
+    <div class="pl"><div class="n">Free</div><div class="p">₹0</div><ul><li>3 subjects</li><li>Weekly timetable</li><li>Focus timer</li></ul><a class="btn alt" href="#join">Start free</a></div>
+    <div class="pl pro"><div class="n">Pro</div><div class="p">₹149<small> / month</small></div><ul><li>Unlimited subjects</li><li>Auto-reschedule</li><li>Progress reports</li></ul><a class="btn" href="#join">Get Pro</a></div>
+  </div>
+</div></section>
+<section id="faq" style="padding-top:0"><div class="w">
+  <div class="sh"><h2>Questions</h2></div>
+  <details><summary>Does it work on my phone?</summary><p>Yes. Focusly runs in any modern mobile browser, so there is nothing to install.</p></details>
+  <details><summary>Can I use it for more than one exam?</summary><p>Yes. Add as many exams as you like and Focusly balances the hours between them.</p></details>
+  <details><summary>What happens to my data?</summary><p>Your plan is stored in your account and is never shared with other people.</p></details>
+</div></section>
+<section id="join" style="padding-top:0"><div class="w">
+  <div class="final"><h2>Get your first plan this weekend.</h2><p>Join the waitlist and we will email you when your spot opens.</p>
+    <form id="f" novalidate><input id="em" type="email" placeholder="you@example.com" aria-label="Email address"><button class="btn" type="submit">Join waitlist</button></form><div id="ok" role="status"></div></div>
+</div></section>
+<div class="w"><footer><span>© 2026 Focusly (demo)</span><span>Page designed and built by DP Studio</span></footer></div>
+<script>
+/* Paste your free access key from web3forms.com (enter your email there and they send the key). */
+var ACCESS_KEY="PASTE_YOUR_WEB3FORMS_KEY";
+function sendMail(subject,fields){
+  if(ACCESS_KEY.indexOf("PASTE")===0)return Promise.reject(new Error("Email is not set up yet. Add the access key."));
+  return fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign({access_key:ACCESS_KEY,subject:subject,from_name:"DP Studio"},fields))})
+  .then(function(r){return r.json()}).then(function(j){if(!j.success)throw new Error(j.message||"Could not send.");return j});
+}
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();
+  var v=document.getElementById("em").value.trim(),o=document.getElementById("ok"),b=e.target.querySelector("button");
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){o.textContent="Enter a valid email address.";return}
+  b.disabled=true;o.textContent="Sending...";
+  sendMail("New waitlist signup: Focusly",{email:v,message:"Waitlist signup from "+v}).then(function(){o.textContent="You are on the waitlist. Thank you.";document.getElementById("em").value=""})
+  .catch(function(err){o.textContent="Could not send: "+err.message}).then(function(){b.disabled=false});
+});
+</script>
+
+</html>
